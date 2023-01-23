@@ -1,7 +1,7 @@
 from des import DesEncryptor
 from gost28147_89 import Gost28147_89Encryptor
 from rsa import RsaEncryptor
-from tests import test_encryption
+from utils import verify_encryption
 
 DES_KEY = bytearray([255, 0, 128, 0, 1, 129, 233])
 GOST_KEY = bytearray([
@@ -15,10 +15,10 @@ MESSAGE = "Hello, world!"
 
 if __name__ == '__main__':
     a = bytearray(MESSAGE, 'utf-8')
-    test_encryption(MESSAGE, DesEncryptor(DES_KEY))
+    verify_encryption(MESSAGE, DesEncryptor(DES_KEY))
     print()
-    test_encryption(MESSAGE, Gost28147_89Encryptor(GOST_KEY))
+    verify_encryption(MESSAGE, Gost28147_89Encryptor(GOST_KEY))
     print()
-    test_encryption(MESSAGE, RsaEncryptor(RSA_N, RSA_E, RSA_D))
+    verify_encryption(MESSAGE, RsaEncryptor(RSA_N, RSA_E, RSA_D))
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
