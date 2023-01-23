@@ -84,12 +84,12 @@ class Gost34_11:
                 return
             pos += add_bytes
             self.hash_step(context.h, context.remainder, 0)
-            self.add_blocks(32, context.S, context.remainder, 0)
+            self.add_blocks(32, context.s, context.remainder, 0)
             context.len += 32
             context.left = 0
         while last_pos - pos >= 32:
             self.hash_step(context.h, block, pos)
-            self.add_blocks(32, context.S, block, pos)
+            self.add_blocks(32, context.s, block, pos)
             context.len += 32
             pos += 32
         if pos != length:
